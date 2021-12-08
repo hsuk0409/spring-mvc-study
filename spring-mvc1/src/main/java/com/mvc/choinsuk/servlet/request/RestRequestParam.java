@@ -1,10 +1,9 @@
 package com.mvc.choinsuk.servlet.request;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -17,5 +16,14 @@ public class RestRequestParam {
 
         System.out.println("username: " + username);
         System.out.println("age: " + age);
+    }
+
+    @PostMapping("/param")
+    public String service(@RequestBody Map<String, String> requestBody) {
+        System.out.println("requestBody = " + requestBody);
+        System.out.println("username = " + requestBody.get("username"));
+        System.out.println("age = " + requestBody.get("age"));
+
+        return "200 OK";
     }
 }
