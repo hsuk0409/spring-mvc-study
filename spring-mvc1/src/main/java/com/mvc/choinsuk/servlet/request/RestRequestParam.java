@@ -1,9 +1,8 @@
 package com.mvc.choinsuk.servlet.request;
 
+import com.mvc.choinsuk.servlet.request.dto.BasicRequestBody;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @Slf4j
 @RestController
@@ -19,10 +18,10 @@ public class RestRequestParam {
     }
 
     @PostMapping("/param")
-    public String service(@RequestBody Map<String, String> requestBody) {
+    public String service(@RequestBody BasicRequestBody requestBody) {
         System.out.println("requestBody = " + requestBody);
-        System.out.println("username = " + requestBody.get("username"));
-        System.out.println("age = " + requestBody.get("age"));
+        System.out.println("username = " + requestBody.getUsername());
+        System.out.println("age = " + requestBody.getAge());
 
         return "200 OK";
     }
